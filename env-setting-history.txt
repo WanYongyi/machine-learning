@@ -1,0 +1,43 @@
+我的虚拟环境 :【conda】pytorch-gpu
+
+Django项目配置：
+python==3.9
+django==3.2.1
+mysqlclient == 2.2.0
+mysql: mysql-5.7.41-winx64
+
+模型运行配置：
+torch==2.1.1+cu121
+numpy==1.26.0
+opencv-python==4.8.1.78
+
+环境配置日志：
+20231120
+(1) 在 conda 环境中创建了 django 项目并根据 python 与 mysql 版本将版本降至3.2.1
+(2) 删除了 django 默认生成的 template 目录，并删除了 setting.py 中对应的路径
+(3) prompt 中输入 conda init powershell 以在pycharm终端操作 conda 环境
+
+20231121
+(1) 管理员 Windows PowerShell 中输入 set-executionpolicy remotesigned；输入 y 确认
+(2) pycharm终端输入 python manage.py startapp app01 创建app后在 settings.py 的 INSTALLED_APPS 处进行注册
+(3) app01 目录下新建 templates 目录
+(4) prompt 中 pip install mysqlclient
+(5) 使用 navicat 创建数据库 animegandb，字符集 utf8，排序规则 utf8_general_ci
+(6) settings.py 中 DATABASES 处连接 mysql
+(7) app01 目录下新建 static 目录，static 目录下新建css、img、js、plugins 目录
+(8) app01/static/plugins 目录下存放静态文件
+(9) 项目根目录下新建 media 目录，settings.py 中配置路径
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+(10) media 目录下新建 input 目录和 output 目录
+
+20231122
+(1) 项目根目录下加入 model.py、test.py 和 weights 目录
+(2) pycharm终端输入 python manage.py makemigrations 和 python manage.py migrate 创建/修改设计的表结构
+(3) navicat 中使用 sql 添加一条数据用于测试
+(4) app01 目录下新建 views 目录存放视图函数文件，各功能模块分文件实现，删除了原 view.py
+(5) app01 目录下新建 utils 目录，存放自建功能文件
+
+20231123
+(1) app01 目录下新建 middleware 目录，存放自建登录中间件，并在 settings.py 的 MIDDLEWARE 处添加配置
+(2) app01/static/img 目录下新建 anime/face，anime/scenery，origin/face，origin/scenery
